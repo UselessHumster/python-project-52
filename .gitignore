@@ -1,11 +1,37 @@
-*.egg-info
-__pycache__
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
 dist/
-*.pyc
-.venv
-.coverage
-coverage.xml
-*_cache/
-.idea/
+build/
+.eggs/
+
+# === Virtualenv / uv ===
+.venv/
+.python-version
+
+# === Django ===
+*.log
+local_settings.py
+db.sqlite3
+media/
+
+# Migrations cache
+**/__pycache__/
+**/*.pyc
+
+# Collected static
+staticfiles/
+
+# === Env ===
 .env
-.sqlite3
+
+# === IDE ===
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
