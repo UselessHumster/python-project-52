@@ -21,3 +21,6 @@ format:
 
 collectstatic:
 	uv run manage.py collectstatic  --noinput
+
+test:
+	uv run manage.py test
