@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Tasks</h1>
+
+<a class="btn btn-primary mb-3" href="{% url 'task_create' %}">Create task</a>
+
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Author</th>
+      <th>Executor</th>
+      <th>Created at</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for task in object_list %}
+    <tr>
+      <td>{{ task.id }}</td>
+      <td>
+        <a href="{% url 'task_detail' task.id %}">{{ task.name }}</a>
+      </td>
+      <td>{{ task.status.name }}</td>
+      <td>{{ task.author.username }}</td>
+      <td>{{ task.executor.username|default:"—" }}</td>
+      <td>{{ task.created_at }}</td>
+      <td>
+        <a class="btn btn-sm btn-outline-light" href="{% url 'task_update' task.id %}">Edit</a>
+        {% if request.user == task.author %}
+          <a class="btn btn-sm btn-outline-danger" href="{% url 'task_delete' task.id %}">Delete</a>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

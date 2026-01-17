@@ -8,7 +8,8 @@ render-start:
 	gunicorn task_manager.wsgi
 
 migrate:
-	uv run python manage.py migrate
+	uv run manage.py makemigrations
+	uv run manage.py migrate
 
 dev:
 	uv run manage.py runserver
