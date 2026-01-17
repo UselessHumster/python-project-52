@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Users</h1>
+
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Full name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for user in object_list %}
+    <tr>
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.get_full_name }}</td>
+      <td>
+        {% if request.user == user %}
+          <a class="btn btn-sm btn-outline-light" href="{% url 'user_update' user.id %}">Edit</a>
+          <a class="btn btn-sm btn-outline-danger" href="{% url 'user_delete' user.id %}">Delete</a>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<a class="btn btn-primary" href="{% url 'user_create' %}">Create user</a>
+{% endblock %}
