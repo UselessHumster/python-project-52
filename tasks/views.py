@@ -12,9 +12,14 @@ from django.views.generic import (
 from .models import Task
 
 
-class TaskListView(LoginRequiredMixin, ListView):
+from django_filters.views import FilterView
+from .filters import TaskFilter
+
+
+class TaskListView(LoginRequiredMixin, FilterView):
     model = Task
     template_name = "tasks/task_list.html"
+    filterset_class = TaskFilter
 
 
 class TaskDetailView(LoginRequiredMixin, DetailView):

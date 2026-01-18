@@ -74,3 +74,32 @@ class TaskCRUDTest(TestCase):
         self.client.login(username="author", password="password123")
         response = self.client.post(reverse("task_delete", args=[self.task.id]))
         self.assertEqual(Task.objects.count(), 0)
+
+        def test_filter_by_status(self):
+            self.client.login(username="author", password="password123")
+
+            response = self.client.get(
+                reverse("task_list"),
+                {"status": self.status.id},
+            )
+
+            self.assertContains(response, self.task.name)
+
+        def test_filter_self_tasks(self):
+            self.client.login(username="author", password="password123")
+
+            response = self.client.get(
+                reverse("task_list"),
+                {"self_tasks": "on"},
+            )
+
+            self.assertContains(response, self.task.name)
+
+            self.client.login(username="executor", password="password123")
+
+            response = self.client.get(
+                reverse("task_list"),
+                {"self_tasks": "on"},
+            )
+
+            self.assertNotContains(response, self.task.name)
