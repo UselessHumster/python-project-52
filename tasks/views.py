@@ -2,18 +2,15 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views.generic import (
-    ListView,
     CreateView,
-    UpdateView,
     DeleteView,
     DetailView,
+    UpdateView,
 )
-
-from .models import Task
-
-
 from django_filters.views import FilterView
+
 from .filters import TaskFilter
+from .models import Task
 
 
 class TaskListView(LoginRequiredMixin, FilterView):

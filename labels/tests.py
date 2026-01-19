@@ -1,10 +1,11 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth.models import User
 
-from .models import Label
 from statuses.models import Status
 from tasks.models import Task
+
+from .models import Label
 
 
 class LabelCRUDTest(TestCase):
@@ -35,7 +36,7 @@ class LabelCRUDTest(TestCase):
         self.assertRedirects(response, reverse("label_list"))
 
     def test_label_update(self):
-        response = self.client.post(
+        self.client.post(
             reverse("label_update", args=[self.label.id]),
             {"name": "Bugfix"},
         )
@@ -43,10 +44,10 @@ class LabelCRUDTest(TestCase):
         self.assertEqual(self.label.name, "Bugfix")
 
     def test_label_delete_protected(self):
-        response = self.client.post(reverse("label_delete", args=[self.label.id]))
+        self.client.post(reverse("label_delete", args=[self.label.id]))
         self.assertEqual(Label.objects.count(), 1)
 
     def test_label_delete_free(self):
         self.task.labels.clear()
-        response = self.client.post(reverse("label_delete", args=[self.label.id]))
+        self.client.post(reverse("label_delete", args=[self.label.id]))
         self.assertEqual(Label.objects.count(), 0)
