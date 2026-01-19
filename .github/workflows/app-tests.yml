@@ -16,7 +16,7 @@ jobs:
         # make depends on uv
       - name: Install dependencies
         run: |
-          ./build
+          make build
       - name: Run linter and pytest
         run: |
           make lint
