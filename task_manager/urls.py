@@ -22,9 +22,9 @@ from .views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", index, name="index"),
-    path("users/", include("users.urls")),
+    path("users/", include("task_manager.users.urls")),
     path("", include("django.contrib.auth.urls"), name='login'),
-    path("statuses/", include("statuses.urls")),
-    path("tasks/", include("tasks.urls")),
-    path("labels/", include("labels.urls")),
+    path("statuses/", include("task_manager.statuses.urls")),
+    path("tasks/", include("task_manager.tasks.urls")),
+    path("labels/", include("task_manager.labels.urls")),
 ]

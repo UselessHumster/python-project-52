@@ -1,6 +1,9 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/UselessHumster/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/UselessHumster/python-project-52/actions)
 
+### Python CI
+[![hexlet-check](https://github.com/UselessHumster/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/UselessHumster/python-project-52/actions/workflows/hexlet-check.yml)
+
 # Task Manager
 
 Task Manager is a simple and powerful web application for managing tasks, inspired by services like Asana and GitHub Issues.
