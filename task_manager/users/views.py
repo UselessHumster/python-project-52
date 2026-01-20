@@ -1,7 +1,9 @@
 from django.contrib import messages
+from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
@@ -53,11 +55,17 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return super().delete(request, *args, **kwargs)
 
 
-
-
 class UserLoginView(LoginView):
     template_name = "registration/login.html"
 
     def form_valid(self, form):
+        response = super().form_valid(form)
         messages.success(self.request, "Вы залогинены")
-        return super().form_valid(form)
+        return response
+
+
+class UserLogoutView(LogoutView):
+    def post(self, request, *args, **kwargs):
+        messages.success(request, "Вы разлогинены")
+        logout(request)
+        return redirect(self.get_success_url())
