@@ -46,10 +46,10 @@
         </span>
         <form method="post" action="{% url 'logout' %}">
           {% csrf_token %}
-          <button class="btn btn-outline-light" type="submit">Выйти</button>
+          <button class="btn btn-outline-light" type="submit">Выход</button>
         </form>
       {% else %}
-        <a class="btn btn-outline-light" href="{% url 'login' %}">Войти</a>
+        <a class="btn btn-outline-light" href="{% url 'login' %}">Вход</a>
         <a class="btn btn-light" href="{% url 'user_create' %}">Регистрация</a>
       {% endif %}
     </div>
