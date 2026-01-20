@@ -6,12 +6,17 @@ from django.contrib.auth.models import User
 class UserCreateForm(UserCreationForm):
     username = forms.CharField(
         label="Имя пользователя",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Имя пользователя"}
+        ),
         help_text='Обязательно. Не более 150 символов. '
                   'Только буквы, цифры и @/./+/-/_')
     password1 = forms.CharField(
         label="Пароль",
         help_text='Ваш пароль должен содержать как минимум 3 символа.',
-        widget=forms.PasswordInput,
+        widget=forms.PasswordInput(
+            attrs={"placeholder": "Пароль"}
+        ),
     )
     password2 = forms.CharField(
         label="Подтверждение пароля",
