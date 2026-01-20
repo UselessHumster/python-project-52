@@ -13,7 +13,7 @@ class StatusListView(LoginRequiredMixin, ListView):
 
 class StatusCreateView(LoginRequiredMixin, CreateView):
     model = Status
-    fields = ["Имя"]
+    fields = ["name"]
     template_name = "statuses/status_form.html"
     success_url = reverse_lazy("status_list")
 

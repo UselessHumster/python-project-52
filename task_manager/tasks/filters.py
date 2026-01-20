@@ -13,22 +13,22 @@ User = get_user_model()
 class TaskFilter(django_filters.FilterSet):
     status = django_filters.ModelChoiceFilter(
         queryset=Status.objects.all(),
-        label="Status",
+        label="Статус",
     )
 
     executor = django_filters.ModelChoiceFilter(
         queryset=User.objects.all(),
-        label="Executor",
+        label="Исполнитель",
     )
 
     labels = django_filters.ModelChoiceFilter(
         queryset=Label.objects.all(),
-        label="Label",
+        label="Метка",
         method="filter_by_label",
     )
 
     self_tasks = django_filters.BooleanFilter(
-        label="Only my tasks",
+        label="Только свои задачи",
         method="filter_self_tasks",
         widget=forms.CheckboxInput,
     )
