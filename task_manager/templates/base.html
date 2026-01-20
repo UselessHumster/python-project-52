@@ -5,7 +5,7 @@
 <html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}Task Manager{% endblock %}</title>
+    <title>{% block title %}Менеджер задач{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {% bootstrap_css %}
@@ -15,25 +15,25 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 border-bottom">
   <div class="container">
-    <a class="navbar-brand" href="/">Task Manager</a>
+    <a class="navbar-brand" href="/">Менеджер задач</a>
 
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="/">Home</a>
+          <a class="nav-link active" href="/">Главная</a>
         </li>
         {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'user_list' %}">Users</a>
+                <a class="nav-link" href="{% url 'user_list' %}">Пользователи</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'status_list' %}">Statuses</a>
+                <a class="nav-link" href="{% url 'status_list' %}">Статусы</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'task_list' %}">Tasks</a>
+                <a class="nav-link" href="{% url 'task_list' %}">Задачи</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'label_list' %}">Labels</a>
+                <a class="nav-link" href="{% url 'label_list' %}">Лэйблы</a>
             </li>
         {% endif %}
 
@@ -46,11 +46,11 @@
         </span>
         <form method="post" action="{% url 'logout' %}">
           {% csrf_token %}
-          <button class="btn btn-outline-light" type="submit">Logout</button>
+          <button class="btn btn-outline-light" type="submit">Выйти</button>
         </form>
       {% else %}
-        <a class="btn btn-outline-light" href="{% url 'login' %}">Login</a>
-        <a class="btn btn-light" href="{% url 'user_create' %}">Sign up</a>
+        <a class="btn btn-outline-light" href="{% url 'login' %}">Войти</a>
+        <a class="btn btn-light" href="{% url 'user_create' %}">Регистрация</a>
       {% endif %}
     </div>
 

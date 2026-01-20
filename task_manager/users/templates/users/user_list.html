@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Users</h1>
+<h1>Пользователи</h1>
 
 <table class="table table-dark table-striped">
   <thead>
     <tr>
       <th>ID</th>
-      <th>Username</th>
-      <th>Full name</th>
-      <th>Actions</th>
+      <th>Имя пользователя</th>
+      <th>Полное имя</th>
     </tr>
   </thead>
   <tbody>
@@ -20,8 +19,8 @@
       <td>{{ user.get_full_name }}</td>
       <td>
         {% if request.user == user %}
-          <a class="btn btn-sm btn-outline-light" href="{% url 'user_update' user.id %}">Edit</a>
-          <a class="btn btn-sm btn-outline-danger" href="{% url 'user_delete' user.id %}">Delete</a>
+          <a class="btn btn-sm btn-outline-light" href="{% url 'user_update' user.id %}">Изменить</a>
+          <a class="btn btn-sm btn-outline-danger" href="{% url 'user_delete' user.id %}">Удалить</a>
         {% endif %}
       </td>
     </tr>
@@ -29,5 +28,5 @@
   </tbody>
 </table>
 
-<a class="btn btn-primary" href="{% url 'user_create' %}">Create user</a>
+<a class="btn btn-primary" href="{% url 'user_create' %}">Создать пользователя</a>
 {% endblock %}

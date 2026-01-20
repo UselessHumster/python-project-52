@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Tasks</h1>
+<h1>Задачи</h1>
 
-<a class="btn btn-primary mb-3" href="{% url 'task_create' %}">Create task</a>
+<a class="btn btn-primary mb-3" href="{% url 'task_create' %}">Создать задачу</a>
 
 {% load django_bootstrap5 %}
 
@@ -29,8 +29,8 @@
   </div>
 
   <div class="mt-3">
-    <button class="btn btn-primary" type="submit">Show</button>
-    <a class="btn btn-outline-secondary" href="{% url 'task_list' %}">Reset</a>
+    <button class="btn btn-primary" type="submit">Показать</button>
+    <a class="btn btn-outline-secondary" href="{% url 'task_list' %}">Сбросить</a>
   </div>
 </form>
 
@@ -38,11 +38,11 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Author</th>
-      <th>Executor</th>
-      <th>Created at</th>
+      <th>Имя</th>
+      <th>Статус</th>
+      <th>Автор</th>
+      <th>Исполнитель</th>
+      <th>Создано</th>
       <th></th>
     </tr>
   </thead>
@@ -58,9 +58,9 @@
       <td>{{ task.executor.username|default:"—" }}</td>
       <td>{{ task.created_at }}</td>
       <td>
-        <a class="btn btn-sm btn-outline-light" href="{% url 'task_update' task.id %}">Edit</a>
+        <a class="btn btn-sm btn-outline-light" href="{% url 'task_update' task.id %}">Изменить</a>
         {% if request.user == task.author %}
-          <a class="btn btn-sm btn-outline-danger" href="{% url 'task_delete' task.id %}">Delete</a>
+          <a class="btn btn-sm btn-outline-danger" href="{% url 'task_delete' task.id %}">Удалить</a>
         {% endif %}
       </td>
     </tr>

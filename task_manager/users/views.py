@@ -20,7 +20,7 @@ class UserCreateView(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, "User successfully registered")
+        messages.success(self.request, "Пользователь успешно зарегистрирован")
         return response
 
 
@@ -35,7 +35,7 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, "User successfully updated")
+        messages.success(self.request, "Пользователь успешно обновлён")
         return response
 
 
@@ -48,5 +48,5 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user == self.get_object()
 
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, "User successfully deleted")
+        messages.success(self.request, "Пользователь успешно удалён")
         return super().delete(request, *args, **kwargs)

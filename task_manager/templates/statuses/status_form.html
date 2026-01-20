@@ -2,11 +2,11 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-<h1>Status form</h1>
+<h1>Добавить статус</h1>
 
 <form method="post">
   {% csrf_token %}
   {% bootstrap_form form %}
-  {% bootstrap_button button_type="submit" content="Save" %}
+  {% bootstrap_button button_type="submit" content="Добавить" %}
 </form>
 {% endblock %}

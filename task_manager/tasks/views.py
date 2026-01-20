@@ -26,24 +26,24 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ["name", "description", "status", "executor", "labels"]
+    fields = ["Имя", "Описание", "Статус", "Исполнитель", "Лэйблы"]
     template_name = "tasks/task_form.html"
     success_url = reverse_lazy("task_list")
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        messages.success(self.request, "Task successfully created")
+        messages.success(self.request, "Задача успешно создана")
         return super().form_valid(form)
 
 
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ["name", "description", "status", "executor", "labels"]
+    fields = ["Имя", "Описание", "Статус", "Исполнитель", "Лэйблы"]
     template_name = "tasks/task_form.html"
     success_url = reverse_lazy("task_list")
 
     def form_valid(self, form):
-        messages.success(self.request, "Task successfully updated")
+        messages.success(self.request, "Задача успешно обновлена")
         return super().form_valid(form)
 
 
@@ -56,5 +56,5 @@ class TaskDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user == self.get_object().author
 
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, "Task successfully deleted")
+        messages.success(self.request, "Задача успешно удалена")
         return super().delete(request, *args, **kwargs)
