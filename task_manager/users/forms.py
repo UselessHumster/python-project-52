@@ -10,21 +10,22 @@ class UserCreateForm(UserCreationForm):
                   'Только буквы, цифры и @/./+/-/_')
     password1 = forms.CharField(
         label="Пароль",
+        help_text='Ваш пароль должен содержать как минимум 3 символа.',
         widget=forms.PasswordInput,
     )
     password2 = forms.CharField(
         label="Подтверждение пароля",
+        help_text='Для подтверждения введите, пожалуйста, пароль ещё раз.',
         widget=forms.PasswordInput,
     )
 
     class Meta:
         model = User
-        fields = ("username", "first_name", "last_name", "email", "password1", "password2")
+        fields = ("first_name", "last_name", "username", "password1", "password2")
         labels = {
             "username": "Имя пользователя",
             "first_name": "Имя",
             "last_name": "Фамилия",
-            "email": "Адрес почты",
             "password1": "Пароль",
             "password2": "Подтверждение пароля",
 
