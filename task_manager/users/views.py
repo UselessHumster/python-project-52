@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
@@ -50,3 +51,13 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, "Пользователь успешно удалён")
         return super().delete(request, *args, **kwargs)
+
+
+
+
+class UserLoginView(LoginView):
+    template_name = "registration/login.html"
+
+    def form_valid(self, form):
+        messages.success(self.request, "Вы залогинены")
+        return super().form_valid(form)
