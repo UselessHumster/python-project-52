@@ -21,10 +21,10 @@ class UserCreateForm(UserCreationForm):
         model = User
         fields = ("username", "first_name", "last_name", "email", "password1", "password2")
         labels = {
-            "username": "Логин",
+            "username": "Имя пользователя",
             "first_name": "Имя",
             "last_name": "Фамилия",
-            "email": "Адресс почты",
+            "email": "Адрес почты",
             "password1": "Пароль",
             "password2": "Подтверждение пароля",
 
