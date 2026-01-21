@@ -22,6 +22,12 @@ class LabelCreateView(LoginRequiredMixin, CreateView):
         messages.success(self.request, "Метка успешно добавлена")
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form_title"] = "Создать метку"
+        context["submit_cap"] = "Создать"
+        return context
+
 
 class LabelUpdateView(LoginRequiredMixin, UpdateView):
     model = Label
@@ -32,6 +38,12 @@ class LabelUpdateView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         messages.success(self.request, "Метка успешно обновлёна")
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form_title"] = "Обновление метки"
+        context["submit_cap"] = "Изменить"
+        return context
 
 
 class LabelDeleteView(LoginRequiredMixin, DeleteView):

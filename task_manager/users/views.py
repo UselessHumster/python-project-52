@@ -23,6 +23,11 @@ class UserCreateView(CreateView):
         messages.success(self.request, "Пользователь успешно зарегистрирован")
         return response
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form_title"] = "Регистрация"
+        context["submit_cap"] = "Зарегистрировать"
+        return context
 
 class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = User
@@ -37,6 +42,12 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         response = super().form_valid(form)
         messages.success(self.request, "Пользователь успешно обновлён")
         return response
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form_title"] = "Обновление пользователя"
+        context["submit_cap"] = "Изменить"
+        return context
 
 
 class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):

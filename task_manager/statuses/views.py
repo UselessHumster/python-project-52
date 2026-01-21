@@ -21,6 +21,12 @@ class StatusCreateView(LoginRequiredMixin, CreateView):
         messages.success(self.request, "Статус успешно создан")
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form_title"] = "Создание статуса"
+        context["submit_cap"] = "Создать"
+        return context
+
 
 class StatusUpdateView(LoginRequiredMixin, UpdateView):
     model = Status
@@ -31,6 +37,12 @@ class StatusUpdateView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         messages.success(self.request, "Статус успешно обновлен")
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form_title"] = "Обновление статуса"
+        context["submit_cap"] = "Изменить"
+        return context
 
 
 class StatusDeleteView(LoginRequiredMixin, DeleteView):
