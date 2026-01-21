@@ -19,7 +19,7 @@ class LabelCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy("label_list")
 
     def form_valid(self, form):
-        messages.success(self.request, "Метка успешно добавлена")
+        messages.success(self.request, "Метка успешно создана")
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
