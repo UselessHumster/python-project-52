@@ -28,9 +28,11 @@ class UserCRUDTest(TestCase):
         response = self.client.post(
             reverse("user_update", args=[self.user.id]),
             {
+                "username": self.user.username,
                 "first_name": "Updated",
                 "last_name": "Name",
-                "email": "test@example.com",
+                'password1': self.user.password,
+                'password2': self.user.password,
             },
         )
 
