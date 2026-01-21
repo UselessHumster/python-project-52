@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 
@@ -7,6 +6,9 @@ from task_manager.tasks.models import Task
 
 from .models import Label
 
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class LabelCRUDTest(TestCase):
     def setUp(self):
