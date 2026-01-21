@@ -38,11 +38,17 @@ class UserCreateForm(UserCreationForm):
 
 
 class UserUpdateForm(forms.ModelForm):
+    username = forms.CharField(
+        label="Имя пользователя",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Имя пользователя"}
+        ),
+        help_text='Обязательно. Не более 150 символов. '
+                  'Только буквы, цифры и @/./+/-/_')
     class Meta:
         model = User
-        fields = ("first_name", "last_name", "email")
+        fields = ("username", "first_name", "last_name",)
         labels = {
             "first_name": "Имя",
             "last_name": "Фамилия",
-            "email": "Адресс почты",
         }
