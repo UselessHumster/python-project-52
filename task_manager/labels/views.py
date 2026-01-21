@@ -61,5 +61,5 @@ class LabelDeleteView(LoginRequiredMixin, DeleteView):
             )
             return redirect("label_list")
 
-        messages.success(self.request, "Метка успешно удалёна")
+        messages.success(self.request, "Метка успешно удалена")
         return super().post(request, *args, **kwargs)

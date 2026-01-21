@@ -59,7 +59,7 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user == self.get_object()
 
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, "Пользователь успешно удалён")
+        messages.success(self.request, "Пользователь успешно удален")
         return super().delete(request, *args, **kwargs)
 
 
