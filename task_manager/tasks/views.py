@@ -49,7 +49,7 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("task_list")
 
     def form_valid(self, form):
-        messages.success(self.request, "Задача успешно обновлена")
+        messages.success(self.request, "Задача успешно изменена")
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):

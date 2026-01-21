@@ -36,7 +36,7 @@ class LabelUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("label_list")
 
     def form_valid(self, form):
-        messages.success(self.request, "Метка успешно обновлёна")
+        messages.success(self.request, "Метка успешно изменена")
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):

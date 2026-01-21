@@ -40,7 +40,7 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, "Пользователь успешно обновлён")
+        messages.success(self.request, "Пользователь успешно изменен")
         return response
 
     def get_context_data(self, **kwargs):
