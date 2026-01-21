@@ -1,9 +1,7 @@
-from django.shortcuts import render
 from django.contrib import messages
-
 from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView, LogoutView
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 
 def index(request):
