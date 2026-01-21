@@ -67,6 +67,6 @@ class TaskDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         return self.request.user == self.get_object().author
 
-    def delete(self, request, *args, **kwargs):
+    def form_valid(self, form):
         messages.success(self.request, "Задача успешно удалена")
-        return super().delete(request, *args, **kwargs)
+        return super().form_valid(form)

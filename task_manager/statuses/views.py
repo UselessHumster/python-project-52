@@ -50,6 +50,6 @@ class StatusDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "statuses/status_confirm_delete.html"
     success_url = reverse_lazy("status_list")
 
-    def delete(self, request, *args, **kwargs):
+    def form_valid(self, form):
         messages.success(self.request, "Статус успешно удален")
-        return super().delete(request, *args, **kwargs)
+        return super().form_valid(form)
