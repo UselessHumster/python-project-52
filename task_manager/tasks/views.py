@@ -9,6 +9,7 @@ from django.views.generic import (
 )
 from django_filters.views import FilterView
 
+from django.contrib.auth.models import User
 from .filters import TaskFilter
 from .models import Task
 
@@ -29,6 +30,12 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     fields = ["name", "description", "status", "executor", "labels"]
     template_name = "tasks/task_form.html"
     success_url = reverse_lazy("task_list")
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields["executor"].queryset = User.objects.all()
+        form.fields["executor"].required = False
+        return form
 
     def form_valid(self, form):
         form.instance.author = self.request.user
