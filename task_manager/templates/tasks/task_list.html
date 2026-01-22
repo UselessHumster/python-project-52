@@ -59,9 +59,7 @@
       <td>{{ task.created_at }}</td>
       <td>
         <a class="btn btn-sm btn-outline-light" href="{% url 'task_update' task.id %}">Изменить</a>
-        {% if request.user == task.author %}
-          <a class="btn btn-sm btn-outline-danger" href="{% url 'task_delete' task.id %}">Удалить</a>
-        {% endif %}
+        <a class="btn btn-sm btn-outline-danger" href="{% url 'task_delete' task.id %}">Удалить</a>
       </td>
     </tr>
   {% endfor %}
