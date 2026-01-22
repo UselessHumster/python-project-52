@@ -35,3 +35,7 @@ staticfiles/
 *.swp
 *.swo
 .DS_Store
+
+
+.coverage
+coverage.xml
