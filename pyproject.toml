@@ -20,28 +20,3 @@ dependencies = [
 dev = [
     "ruff>=0.14.13",
 ]
-
-[tool.ruff]
-line-length = 88
-target-version = "py310"
-
-# Что проверяем
-select = [
-  "E",  # pycodestyle errors
-  "F",  # pyflakes
-  "I",  # isort (импорты)
-  "B",  # bugbear
-  "UP", # pyupgrade
-]
-
-# Что игнорируем
-ignore = [
-  "E501", # длина строки (часто мешает в Django)
-]
-
-# Что не проверяем
-exclude = [
-  "migrations",
-  "__pycache__",
-  "settings.py",
-]

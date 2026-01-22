@@ -9,6 +9,7 @@ from .models import Label
 
 User = get_user_model()
 
+
 class LabelCRUDTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(

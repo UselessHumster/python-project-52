@@ -4,6 +4,7 @@ from django.urls import reverse
 
 User = get_user_model()
 
+
 class UserCRUDTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(

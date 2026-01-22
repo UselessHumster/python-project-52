@@ -23,7 +23,9 @@ class UserCreateView(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, "Пользователь успешно зарегистрирован")
+        messages.success(
+            self.request,
+            "Пользователь успешно зарегистрирован")
         return response
 
     def get_context_data(self, **kwargs):
@@ -31,6 +33,7 @@ class UserCreateView(CreateView):
         context["form_title"] = "Регистрация"
         context["submit_cap"] = "Зарегистрировать"
         return context
+
 
 class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = User
@@ -62,7 +65,9 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user == self.get_object()
 
     def handle_no_permission(self):
-        messages.error(self.request, "У вас нет прав для изменения другого пользователя.")
+        messages.error(
+            self.request,
+            "У вас нет прав для изменения другого пользователя.")
         return redirect("user_list")
 
     def form_valid(self, form):

@@ -8,6 +8,7 @@ from .models import Task
 
 User = get_user_model()
 
+
 class TaskCRUDTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(

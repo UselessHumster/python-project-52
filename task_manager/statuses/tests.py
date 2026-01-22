@@ -6,6 +6,7 @@ from .models import Status
 
 User = get_user_model()
 
+
 class StatusCRUDTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(

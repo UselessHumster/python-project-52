@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 User = get_user_model()
 
+
 class UserCreateForm(UserCreationForm):
     username = forms.CharField(
         label="Имя пользователя",
@@ -27,7 +28,9 @@ class UserCreateForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("first_name", "last_name", "username", "password1", "password2")
+        fields = (
+            "first_name", "last_name", "username", "password1", "password2"
+        )
         labels = {
             "username": "Имя пользователя",
             "first_name": "Имя",
@@ -61,7 +64,9 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ("first_name", "last_name", "username", "password1", "password2")
+        fields = (
+            "first_name", "last_name", "username", "password1", "password2"
+        )
         labels = {
             "username": "Имя пользователя",
             "first_name": "Имя",
