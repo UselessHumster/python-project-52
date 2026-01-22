@@ -57,7 +57,7 @@ class StatusDeleteView(LoginRequiredMixin, DeleteView):
         if status.tasks.exists():
             messages.error(
                 self.request,
-                "Невозможно удалить метку, потому что она используется",
+                "Невозможно удалить статус, потому что она используется",
             )
             return redirect("status_list")
 
