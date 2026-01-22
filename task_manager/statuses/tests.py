@@ -8,9 +8,11 @@ User = get_user_model()
 
 class StatusCRUDTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create(
-            username="testuser",
-            password="password123",
+        self.user = User.objects.create_user(
+            username='testuser',
+            password='password123',
+            first_name='Test',
+            last_name='User'
         )
         self.status = Status.objects.create(name="New")
 

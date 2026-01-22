@@ -18,10 +18,8 @@
       <td>{{ user.username }}</td>
       <td>{{ user.get_full_name }}</td>
       <td>
-        {% if request.user == user %}
           <a class="btn btn-sm btn-outline-light" href="{% url 'user_update' user.id %}">Изменить</a>
           <a class="btn btn-sm btn-outline-danger" href="{% url 'user_delete' user.id %}">Удалить</a>
-        {% endif %}
       </td>
     </tr>
   {% endfor %}
