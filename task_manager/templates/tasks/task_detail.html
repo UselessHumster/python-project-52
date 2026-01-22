@@ -9,6 +9,18 @@
 <p><strong>Исполнитель:</strong> {{ object.executor }}</p>
 <p><strong>Создано:</strong> {{ object.created_at }}</p>
 
+<div class="col">
+    <h6>Метки: {% if not task.labels.all %}-{% endif %}</h6>
+    <ul>
+    {% if task.labels.all %}
+        {% for label in task.labels.all %}
+        <li>{{ label.name }}</li>
+        {% endfor %}
+    {% endif %}
+     </ul>
+</div>
+
+
 <a class="btn btn-outline-light" href="{% url 'task_update' object.id %}">Изменить</a>
 {% if request.user == object.author %}
   <a class="btn btn-outline-danger" href="{% url 'task_delete' object.id %}">Удалить</a>

@@ -6,7 +6,7 @@ User = get_user_model()
 
 class UserCRUDTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(
+        self.user = User.objects.create(
             username="testuser",
             password="password123",
         )
@@ -20,6 +20,7 @@ class UserCRUDTest(TestCase):
                 "password2": "StrongPass123!",
             },
         )
+        print(User.objects.count())
         self.assertEqual(User.objects.count(), 2)
         self.assertRedirects(response, reverse("login"))
 
