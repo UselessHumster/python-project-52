@@ -4,6 +4,7 @@
 ### Python CI
 [![hexlet-check](https://github.com/UselessHumster/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/UselessHumster/python-project-52/actions/workflows/hexlet-check.yml)
 
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=UselessHumster_python-project-52&metric=coverage)](https://sonarcloud.io/summary/new_code?id=UselessHumster_python-project-52)
 # Task Manager
 
 Task Manager is a simple and powerful web application for managing tasks, inspired by services like Asana and GitHub Issues.
