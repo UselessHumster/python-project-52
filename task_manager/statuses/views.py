@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
@@ -51,5 +52,14 @@ class StatusDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("status_list")
 
     def form_valid(self, form):
+        status = self.get_object()
+
+        if status.tasks.exists():
+            messages.error(
+                self.request,
+                "Невозможно удалить метку, потому что она используется",
+            )
+            return redirect("status_list")
+
         messages.success(self.request, "Статус успешно удален")
         return super().form_valid(form)
